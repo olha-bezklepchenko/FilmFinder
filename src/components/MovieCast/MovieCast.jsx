@@ -57,7 +57,9 @@ const MovieCast = () => {
               <div className={css.infoWrapper}>
                 <h3 className={css.infoName}>{actor.name}</h3>
                 <p className={css.infoAccent}>As</p>
-                <p className={css.infoText}>{actor.character}</p>
+                <p className={css.infoText}>
+                  {actor.character ? actor.character : "Unknown"}
+                </p>
               </div>
             </li>
           ))}

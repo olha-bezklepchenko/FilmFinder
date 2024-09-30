@@ -112,11 +112,15 @@
   width: calc((100% - 20px) / 2);
   display: flex;
   gap: 5px;
-  align-items: center;
+  align-items: start;
 }
 
 .infoAccent {
   font-size: 18px;
+}
+.infoText {
+  font-size: 18px;
+  text-align: left;
 }
 
 .nav {

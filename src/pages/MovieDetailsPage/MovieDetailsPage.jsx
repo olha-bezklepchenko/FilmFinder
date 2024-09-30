@@ -84,7 +84,11 @@ const MovieDetailsPage = () => {
                     <h2 className={css.infoTagline}>{movie.tagline}</h2>
                   </div>
 
-                  <p className={css.infoOwerview}>{movie.overview}</p>
+                  <p className={css.infoOwerview}>
+                    {movie.overview
+                      ? movie.overview
+                      : "The movie's description remains a mystery for now."}
+                  </p>
                   <ul className={css.infoList}>
                     <li className={css.infoItem}>
                       <h3 className={css.infoAccent}>Geners:</h3>
@@ -104,7 +108,7 @@ const MovieDetailsPage = () => {
                       <p className={css.infoText}>{movie.release_date}</p>
                     </li>
                     <li className={css.infoItem}>
-                      <h3 className={css.infoAccent}>Origin country:</h3>
+                      <h3 className={css.infoAccent}>Country:</h3>
                       <p className={css.infoText}>
                         {movie.production_countries
                           ? movie.production_countries
