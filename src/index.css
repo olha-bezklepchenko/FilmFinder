@@ -2,8 +2,8 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #1c1c1d;
-  background-color: #fcfcfc;
+  color: #0b0114;
+  background-color: #19042b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,7 +19,7 @@ body {
   margin: 0 auto;
   font-family: sans-serif;
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 18px;
   padding-right: 0;
 }
 
@@ -43,6 +43,7 @@ ol {
 a {
   color: currentColor;
   text-decoration: none;
+  display: block;
 }
 
 input,

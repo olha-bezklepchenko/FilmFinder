@@ -1,10 +1,9 @@
 .form {
   display: flex;
   justify-content: center;
-  background: linear-gradient(135deg, #bfdff5, #98d6f5, #016ea5, #19005f);
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 5px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .inputWrapper {
@@ -20,10 +19,10 @@
   outline: transparent;
   border: none;
   box-sizing: border-box;
-  transition: box-shadow 250ms ease;
+  transition: box-shadow 250ms cubic-bezier(0.7, 0.98, 0.86, 0.98);
 }
 .input:hover {
-  box-shadow: 0 0 0 2px #98d6f5;
+  box-shadow: 0 0 0 2px #bfa5cc;
 }
 
 .btnSearch {
@@ -42,7 +41,7 @@
 }
 
 .btnSearch:hover .icon {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 @media screen and (min-width: 520px) {

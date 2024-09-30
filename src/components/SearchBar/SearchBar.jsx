@@ -1,6 +1,5 @@
 import { Formik, Field, Form } from "formik";
-
-import { FcSearch } from "react-icons/fc";
+import { SiSearxng } from "react-icons/si";
 import css from "./SearchBar.module.css";
 
 const SearchBar = ({ handleChangeQuery }) => {
@@ -25,7 +24,7 @@ const SearchBar = ({ handleChangeQuery }) => {
             placeholder="Search movies"
           />
           <button type="submit" className={css.btnSearch}>
-            <FcSearch size={30} className={css.icon} />
+            <SiSearxng size="25px" color="#19042b" className={css.icon} />
           </button>
         </div>
       </Form>

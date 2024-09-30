@@ -1,0 +1,41 @@
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  color: #e2d5e9;
+  display: inline-block;
+  font-size: 18px;
+  border: 1px solid #e2d5e9;
+  border-radius: 8px;
+
+  padding: 6px 12px;
+  font-weight: 600;
+  text-align: center;
+  background-color: transparent;
+  transition: color 250ms cubic-bezier(0.7, 0.98, 0.86, 0.98),
+    background-color 250 mscubic-bezier(0.7, 0.98, 0.86, 0.98),
+    box-shadow 250ms cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+
+.btn:disabled {
+  color: #a0a0a0; /* Блідіший колір тексту для неактивної кнопки */
+  background-color: #e2d5e94d; /* Блідий фон */
+  border-color: #a0a0a0; /* Зміна кольору обведення */
+
+  box-shadow: none; /* Забрати тіні для неактивної кнопки */
+  opacity: 0.6; /* Легка прозорість, щоб показати, що кнопка недоступна */
+}
+
+.span {
+  color: #e2d5e9;
+}
+
+.btn:enabled:hover,
+.btn:enabled:focus {
+  color: #40065e;
+  background-color: #e2d5e9;
+}

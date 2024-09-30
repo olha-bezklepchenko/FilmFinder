@@ -1,0 +1,17 @@
+.errorContainer {
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 1px #c9b2d67c;
+  padding: 10px;
+  color: #e2d5e9;
+}
+
+.errorTitle {
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.errorMessage {
+  font-style: italic;
+  font-size: 20px;
+}

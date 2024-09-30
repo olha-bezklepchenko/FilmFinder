@@ -5,6 +5,8 @@ import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
+import Section from "../../components/Section/Section.jsx";
+import Container from "../../components/Container/Container.jsx";
 import { useState, useEffect } from "react";
 
 const MoviesPage = () => {
@@ -30,8 +32,7 @@ const MoviesPage = () => {
         setMovies(data.results);
         setTotalPages(data.total_pages);
       } catch (error) {
-        setIsError(true);
-        console.error("Error fetching data:", error);
+        setIsError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -55,35 +56,39 @@ const MoviesPage = () => {
   };
 
   return (
-    <div>
-      <SearchBar handleChangeQuery={handleChangeQuery} />
-      {isLoading && <Loader />}
-      {isError && (
-        <ErrorMessage
-          title="Something went wrong..."
-          message=" We couldn't load the movies. Please check your internet connection
-        or try again later."
-        />
-      )}
-      {movies?.length > 0 ? (
-        <>
-          <MovieList movies={movies} />
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        </>
-      ) : (
-        query &&
-        !isLoading && (
-          <ErrorMessage
-            title="Unfortunately"
-            message="There are no movies to display."
-          />
-        )
-      )}
-    </div>
+    <>
+      <Section>
+        <Container>
+          <SearchBar handleChangeQuery={handleChangeQuery} />
+          {isLoading && <Loader />}
+          {isError && (
+            <ErrorMessage
+              title="Something went wrong..."
+              message=" We couldn't load the movies. Please check your internet connection
+            or try again later."
+            />
+          )}
+          {movies?.length > 0 ? (
+            <>
+              <MovieList movies={movies} />
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            </>
+          ) : (
+            query &&
+            !isLoading && (
+              <ErrorMessage
+                title="Unfortunately"
+                message="There are no movies to display.Try another query."
+              />
+            )
+          )}
+        </Container>
+      </Section>
+    </>
   );
 };
 
