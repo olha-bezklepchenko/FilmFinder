@@ -131,7 +131,7 @@
   width: 100%;
   display: flex;
   gap: 10px;
-  align-items: center;
+  align-items: start;
   justify-content: start;
 }
 
@@ -141,6 +141,10 @@
 .infoText {
   font-size: 14px;
   text-align: left;
+}
+
+.infoIcon {
+  align-self: center;
 }
 
 .nav {

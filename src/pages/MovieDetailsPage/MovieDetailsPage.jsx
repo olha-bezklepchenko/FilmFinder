@@ -98,7 +98,7 @@ const MovieDetailsPage = () => {
                           {movie.genres.map((genre) => genre.name).join(", ")}
                         </p>
                       ) : (
-                        <BsPatchQuestion />
+                        <BsPatchQuestion size="20" className={css.infoIcon} />
                       )}
                     </li>
                     <li className={css.infoItem}>
@@ -106,7 +106,7 @@ const MovieDetailsPage = () => {
                       {movie.runtime ? (
                         <p className={css.infoText}>{`${movie.runtime} min`}</p>
                       ) : (
-                        <BsPatchQuestion />
+                        <BsPatchQuestion size="20" className={css.infoIcon} />
                       )}
                     </li>
                     <li className={css.infoItem}>
@@ -115,7 +115,7 @@ const MovieDetailsPage = () => {
                       {movie.release_date ? (
                         <p className={css.infoText}>{movie.release_date}</p>
                       ) : (
-                        <BsPatchQuestion />
+                        <BsPatchQuestion size="20" className={css.infoIcon} />
                       )}
                     </li>
                     <li className={css.infoItem}>
@@ -127,7 +127,7 @@ const MovieDetailsPage = () => {
                             .join(", ")}
                         </p>
                       ) : (
-                        <BsPatchQuestion />
+                        <BsPatchQuestion size="20" className={css.infoIcon} />
                       )}
                     </li>
                     <li className={css.infoItem}>
@@ -137,7 +137,7 @@ const MovieDetailsPage = () => {
                           {movie.vote_average.toFixed(1)}
                         </p>
                       ) : (
-                        <BsPatchQuestion />
+                        <BsPatchQuestion size="20" className={css.infoIcon} />
                       )}
                     </li>
                   </ul>
