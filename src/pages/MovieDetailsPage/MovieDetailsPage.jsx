@@ -12,6 +12,7 @@ import Section from "../../components/Section/Section.jsx";
 import Container from "../../components/Container/Container.jsx";
 import { getMovieDetails } from "../../servicies/tmdb-api";
 import css from "./MovieDetailsPage.module.css";
+import { BsPatchQuestion } from "react-icons/bs";
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -92,36 +93,52 @@ const MovieDetailsPage = () => {
                   <ul className={css.infoList}>
                     <li className={css.infoItem}>
                       <h3 className={css.infoAccent}>Geners:</h3>
-
-                      <p className={css.infoText}>
-                        {movie.genres
-                          ? movie.genres.map((genre) => genre.name).join(", ")
-                          : " "}
-                      </p>
+                      {movie.genres?.length > 0 ? (
+                        <p className={css.infoText}>
+                          {movie.genres.map((genre) => genre.name).join(", ")}
+                        </p>
+                      ) : (
+                        <BsPatchQuestion />
+                      )}
                     </li>
                     <li className={css.infoItem}>
                       <h3 className={css.infoAccent}>Runtime:</h3>
-                      <p className={css.infoText}>{movie.runtime} min</p>
+                      {movie.runtime ? (
+                        <p className={css.infoText}>{`${movie.runtime} min`}</p>
+                      ) : (
+                        <BsPatchQuestion />
+                      )}
                     </li>
                     <li className={css.infoItem}>
                       <h3 className={css.infoAccent}>Release Date:</h3>
-                      <p className={css.infoText}>{movie.release_date}</p>
+
+                      {movie.release_date ? (
+                        <p className={css.infoText}>{movie.release_date}</p>
+                      ) : (
+                        <BsPatchQuestion />
+                      )}
                     </li>
                     <li className={css.infoItem}>
                       <h3 className={css.infoAccent}>Country:</h3>
-                      <p className={css.infoText}>
-                        {movie.production_countries
-                          ? movie.production_countries
-                              .map((country) => country.name)
-                              .join(", ")
-                          : "No countries available"}
-                      </p>
+                      {movie.production_countries?.length > 0 ? (
+                        <p className={css.infoText}>
+                          {movie.production_countries
+                            .map((country) => country.name)
+                            .join(", ")}
+                        </p>
+                      ) : (
+                        <BsPatchQuestion />
+                      )}
                     </li>
                     <li className={css.infoItem}>
                       <h3 className={css.infoAccent}>Rating:</h3>
-                      <p className={css.infoText}>
-                        {movie.vote_average.toFixed(1)}
-                      </p>
+                      {movie.vote_average ? (
+                        <p className={css.infoText}>
+                          {movie.vote_average.toFixed(1)}
+                        </p>
+                      ) : (
+                        <BsPatchQuestion />
+                      )}
                     </li>
                   </ul>
                 </div>

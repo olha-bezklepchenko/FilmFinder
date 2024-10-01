@@ -130,8 +130,9 @@
 .infoItem {
   width: 100%;
   display: flex;
-  gap: 5px;
-  align-items: start;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
 }
 
 .infoAccent {
