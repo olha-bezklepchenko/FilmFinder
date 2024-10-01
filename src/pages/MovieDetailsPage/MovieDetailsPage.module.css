@@ -97,6 +97,25 @@
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 200px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.infoOwerview::-webkit-scrollbar {
+  width: 8px;
+}
+
+.infoOwerview::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.infoOwerview::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.infoOwerview::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .infoList {
@@ -167,18 +186,35 @@
 }
 
 @media screen and (min-width: 768px) {
+  .infoTitle {
+    font-size: 24px;
+  }
+
+  .infoTagline {
+    font-size: 20px;
+  }
+
   .infoOwerview {
+    font-size: 18px;
     padding: 10px 20px;
   }
+
   .infoList {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
   }
 
   .infoItem {
     width: calc((100% - 20px) / 2);
     gap: 5px;
+  }
+
+  .infoAccent {
+    font-size: 18px;
+  }
+  .infoText {
+    font-size: 18px;
   }
 
   .nav {
@@ -208,30 +244,5 @@
   .infoWrapper {
     padding: 20px;
     height: 100%;
-  }
-
-  .infoTitle {
-    font-size: 24px;
-  }
-
-  .infoTagline {
-    font-size: 20px;
-  }
-
-  .infoOwerview {
-    font-size: 18px;
-    padding: 10px 20px;
-  }
-
-  .infoItem {
-    width: calc((100% - 20px) / 2);
-  }
-
-  .infoAccent {
-    font-size: 18px;
-  }
-  .infoText {
-    font-size: 18px;
-    text-align: left;
   }
 }
