@@ -22,12 +22,12 @@
 }
 
 .btn:disabled {
-  color: #a0a0a0; /* Блідіший колір тексту для неактивної кнопки */
-  background-color: #e2d5e94d; /* Блідий фон */
-  border-color: #a0a0a0; /* Зміна кольору обведення */
+  color: #a0a0a0;
+  background-color: #e2d5e94d;
+  border-color: #a0a0a0;
 
-  box-shadow: none; /* Забрати тіні для неактивної кнопки */
-  opacity: 0.6; /* Легка прозорість, щоб показати, що кнопка недоступна */
+  box-shadow: none;
+  opacity: 0.6;
 }
 
 .span {

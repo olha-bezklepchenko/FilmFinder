@@ -1,13 +1,12 @@
 .list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 30px;
-  justify-content: center;
   margin-bottom: 40px;
 }
 
 .item {
-  width: calc((100% - 120px) / 5);
+  width: 100%;
   height: 380px;
   overflow: hidden;
   border: 1px solid #bfa5cc;
@@ -70,7 +69,7 @@
   justify-content: center;
   gap: 5px;
   color: #bfa5cc;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
 }
 .movieTitle {
@@ -79,4 +78,28 @@
 }
 
 .movieAccent {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .item {
+    width: calc((100% - 60px) / 2);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .item {
+    width: calc((100% - 90px) / 4);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .item {
+    width: calc((100% - 120px) / 5);
+  }
 }
