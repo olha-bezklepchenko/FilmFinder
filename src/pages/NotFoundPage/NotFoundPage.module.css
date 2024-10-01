@@ -1,14 +1,15 @@
 .wrapper {
   padding: 20px 0;
+  height: 90vh;
 }
 .imageBox {
   position: relative;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .imageWrapper {
   box-shadow: 0px 0px 10px 1px #bfa5cc;
-  height: 500px;
+  height: 60vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -19,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .image {
