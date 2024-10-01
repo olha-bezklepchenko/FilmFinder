@@ -21,14 +21,15 @@
 
 .backdrop {
   display: flex;
-  gap: 40px;
-  padding: 40px 40px;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 10px;
   background-color: #19042b;
   box-shadow: 0px 0px 10px 1px #bfa5cc;
-  height: 500px;
+  height: 900px;
   width: 100%;
-  display: flex;
   align-items: center;
+  justify-content: center;
   color: #19042b;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -37,11 +38,11 @@
 .posterWrapper {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   box-shadow: 0px 0px 10px 1px #1e052b63;
   border-radius: 12px;
   height: auto;
-  width: 280px;
+  width: 270px;
   max-height: 100%;
   overflow: hidden;
   flex-shrink: 0;
@@ -59,12 +60,13 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #d7cde08f;
-  padding: 20px;
-  height: 100%;
+  padding: 10px;
+  height: 400px;
   width: 100%;
   border-radius: 12px;
   box-shadow: 0px 0px 10px 1px #1e052b63;
   text-align: center;
+  gap: 5px;
 }
 
 .infoTitle {
@@ -73,35 +75,33 @@
   text-decoration: underline;
   color: #40065e;
   font-weight: 800;
-  font-size: 24px;
+  font-size: 16px;
   margin-bottom: 5px;
 }
 
 .infoTagline {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 14px;
   font-style: italic;
-
   width: auto;
-  height: auto;
-
-  margin-bottom: 10px;
 }
 
 .infoOwerview {
-  font-size: 18px;
   text-align: start;
   border-radius: 8px;
   box-shadow: 0px 0px 10px 1px #1e052b7c;
   background-color: #1e052bb0;
   color: #e2d5e9;
-  padding: 10px 20px;
-  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 14px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 200px;
 }
 
 .infoList {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
   padding: 5px 20px;
   border-radius: 8px;
@@ -109,34 +109,34 @@
 }
 
 .infoItem {
-  width: calc((100% - 20px) / 2);
+  width: 100%;
   display: flex;
   gap: 5px;
   align-items: start;
 }
 
 .infoAccent {
-  font-size: 18px;
+  font-size: 14px;
 }
 .infoText {
-  font-size: 18px;
+  font-size: 14px;
   text-align: left;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   background: linear-gradient(135deg, #bfa5cc, #6e348b, #40065e);
   border-radius: 12px;
   box-shadow: 0px 0px 10px 1px #bfa5cc;
-  padding: 5px 40px;
+  padding: 5px 20px;
   margin-bottom: 20px;
 }
 
 .link {
   color: #e2d5e9;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;
   transition: color 250ms cubic-bezier(0.7, 0.98, 0.86, 0.98),
@@ -149,7 +149,7 @@
   color: #40065e;
   background-color: #e2d5e9;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 4px 8px;
   border-radius: 8px;
   transform: scale(1);
   pointer-events: none;
@@ -158,4 +158,80 @@
 .link:hover,
 .link:focus {
   color: #ffffff;
+}
+
+@media screen and (min-width: 375px) {
+  .posterWrapper {
+    width: 280px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .infoOwerview {
+    padding: 10px 20px;
+  }
+  .infoList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .infoItem {
+    width: calc((100% - 20px) / 2);
+    gap: 5px;
+  }
+
+  .nav {
+    gap: 20px;
+
+    padding: 5px 40px;
+  }
+
+  .link {
+    font-size: 24px;
+  }
+
+  .active {
+    padding: 6px 12px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .backdrop {
+    flex-wrap: nowrap;
+    gap: 40px;
+    padding: 40px 40px;
+    height: 500px;
+    width: 100%;
+  }
+
+  .infoWrapper {
+    padding: 20px;
+    height: 100%;
+  }
+
+  .infoTitle {
+    font-size: 24px;
+  }
+
+  .infoTagline {
+    font-size: 20px;
+  }
+
+  .infoOwerview {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  .infoItem {
+    width: calc((100% - 20px) / 2);
+  }
+
+  .infoAccent {
+    font-size: 18px;
+  }
+  .infoText {
+    font-size: 18px;
+    text-align: left;
+  }
 }
