@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 import css from "./MovieReviews.module.css";
@@ -11,6 +11,7 @@ const MovieReviews = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { movieId } = useParams();
+  const firstReviewRef = useRef(null);
 
   useEffect(() => {
     const fetchMovieReviews = async () => {
@@ -28,6 +29,16 @@ const MovieReviews = () => {
     fetchMovieReviews();
   }, [movieId]);
 
+  useEffect(() => {
+    if (reviews.length > 0 && firstReviewRef.current) {
+      const itemHeight = firstReviewRef.current.getBoundingClientRect().height;
+      window.scrollBy({
+        top: itemHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [reviews]);
+
   return (
     <div>
       {isLoading && <Loader />}
@@ -40,8 +51,12 @@ const MovieReviews = () => {
       )}
       {reviews.length > 0 && (
         <ul className={css.list}>
-          {reviews.map((review) => (
-            <li key={review.id} className={css.item}>
+          {reviews.map((review, index) => (
+            <li
+              key={review.id}
+              className={css.item}
+              ref={index === 0 ? firstReviewRef : null}
+            >
               <div className={css.infoWrapper}>
                 <FaRegCommentDots size="40" color="#e2d5e9" />
                 <ul className={css.infoList}>
@@ -63,7 +78,7 @@ const MovieReviews = () => {
                   </li>
                 </ul>
               </div>
-              <p className={css.textWrapper}>{review.content}</p>
+              <p className={css.textWrapper}>{review.content} </p>
             </li>
           ))}
         </ul>

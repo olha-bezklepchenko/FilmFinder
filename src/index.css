@@ -1,10 +1,6 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #0b0114;
-  background-color: #19042b;
+@import "styles/variables.css";
 
+:root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -13,14 +9,20 @@
 
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
   margin: 0 auto;
   font-family: sans-serif;
   line-height: 1.5;
   font-size: 18px;
   padding-right: 0;
+  color: var(--color-text-base);
+  background-color: var(--color-mainBackground);
 }
 
 h1,
@@ -44,15 +46,26 @@ a {
   color: currentColor;
   text-decoration: none;
   display: block;
+  color: inherit;
 }
 
-input,
-button {
+input {
   font: inherit;
   cursor: pointer;
   outline: transparent;
 }
 
+button {
+  font: inherit;
+  cursor: pointer;
+  outline: transparent;
+  background-color: transparent;
+  font: inherit;
+  color: inherit;
+}
+
 img {
   display: block;
+  max-width: 100%;
+  height: auto;
 }

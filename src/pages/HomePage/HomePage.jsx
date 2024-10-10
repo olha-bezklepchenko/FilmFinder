@@ -11,13 +11,14 @@ const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [time, setTime] = useState("day");
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         setIsLoading(true);
         setIsError(false);
-        const trendingMovies = await getTrendingMovies();
+        const trendingMovies = await getTrendingMovies(time);
         setMovies(trendingMovies);
       } catch (error) {
         setIsError(error.message);
@@ -27,13 +28,33 @@ const HomePage = () => {
     };
 
     fetchMovies();
-  }, []);
+  }, [time]);
 
   return (
     <>
       <Section>
         <Container>
-          <h1 className={css.title}>Daily Movie Trends</h1>
+          <div className={css.menu}>
+            {time === "day" ? (
+              <h1 className={css.title}>Daily Movie Trends</h1>
+            ) : (
+              <h1 className={css.title}>Weekly Movie Trends</h1>
+            )}
+            <button
+              className={css.btn}
+              onClick={() => setTime("day")}
+              disabled={time === "day"}
+            >
+              Daily
+            </button>
+            <button
+              className={css.btn}
+              onClick={() => setTime("week")}
+              disabled={time === "week"}
+            >
+              Weekly
+            </button>
+          </div>
           {isLoading && <Loader />}
           {isError && (
             <ErrorMessage

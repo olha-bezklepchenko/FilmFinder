@@ -1,0 +1,81 @@
+:root {
+  /*colors*/
+
+  --color-mainBackground: #19042b;
+  --color-primary: #e2d5e9;
+  --color-secondary: #40065e;
+  --color-accent: #6e348b;
+  --color-backdrop-box: #19042b;
+
+  --color-text-base: #efeaf1;
+  --color-text-contrast: #0b0114;
+  --color-text-accent: #40065e;
+
+  --color-hover-link-header: #ffffff;
+  --color-hover-link: #40065e;
+
+  --color-wrapperTrasparent-light: #d7cde0a8;
+  --color-wrapperTrasparent-dark: #2b043fa8;
+
+  --color-gradient-cut: linear-gradient(135deg, #bfa5cc, #6e348b, #40065e);
+  --color-gradient-header: linear-gradient(
+    135deg,
+    #e2d5e9,
+    #bfa5cc,
+    #6e348b,
+    #40065e
+  );
+
+  /* border */
+  --border-light: 1px solid #e2d5e9;
+  --border-colorful: 1px solid #bfa5cc;
+
+  /*shadow*/
+  --drop-shadow-header: 0px 2px 10px 1px #bfa5cc;
+
+  --shadow-light: 0px 0px 10px 1px #bfa5cc;
+  --shadow-light-trasparent: 0px 0px 10px 1px #c9b2d67c;
+  --shadow-dark-trasparent: 0px 0px 10px 1px #1e052b63;
+  --shadow-input: 0px 0px 0px 3px #bfa5cc;
+
+  /*animation*/
+  --animation-cubicBezier: 250ms cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+
+/* Світла тема */
+:root.light-theme {
+  --color-hover-link: #ffffff;
+
+  --color-mainBackground: #e2d5e9;
+  --color-backdrop-box: #41065e6e;
+  --color-text-base: #0b0114;
+  --color-text-contrast: #efeaf1;
+  --color-text-accent: #40065e;
+
+  --color-primary: #40065e;
+  --color-secondary: #e2d5e9;
+
+  --color-wrapperTrasparent-light: #2f0444ad;
+
+  --color-wrapperTrasparent-dark: #d7cde08f;
+  --color-gradient-cut: linear-gradient(135deg, #6e348b, #bfa5cc, #e2d5e9);
+  --color-gradient-header: linear-gradient(
+    135deg,
+    #40065e,
+    #6e348b,
+    #bfa5cc,
+    #e2d5e9
+  );
+
+  /* border */
+  --border-light: 1px solid #6e348b;
+  --border-colorful: 1px solid #40065e;
+
+  /*shadow*/
+  --drop-shadow-header: 0px 2px 10px 1px #6e348b;
+
+  --shadow-light: 0px 0px 10px 1px #6e348b;
+  --shadow-light-trasparent: 0px 0px 10px 1px #1e052b63;
+  --shadow-dark-trasparent: 0px 0px 10px 1px #c9b2d67c;
+  --shadow-input: 0px 0px 0px 3px #6e348b7c;
+}

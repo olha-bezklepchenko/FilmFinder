@@ -1,15 +1,17 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
 import { RiMovie2Fill } from "react-icons/ri";
+import SwitcherTheme from "../SwitcherTheme/SwitcherTheme";
 
 const Navigation = () => {
   return (
     <header className={css.header}>
       <div className={css.wrapper}>
-        <div className={css.logo}>
-          <RiMovie2Fill size="40px" color="#19042b" />
+        <Link to="/" className={css.logo}>
+          <RiMovie2Fill className={css.logoIcon} />
           <p className={css.logoName}>FilmFinder</p>
-        </div>
+        </Link>
+        <SwitcherTheme />
         <nav className={css.nav}>
           <NavLink
             to="/"

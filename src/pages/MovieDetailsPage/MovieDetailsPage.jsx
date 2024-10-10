@@ -22,7 +22,7 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const goBackRef = useRef(location.state ?? "/movies");
   const defaultImg =
-    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
+    "https://dummyimage.com/400x600/c2b8c7/40065e.jpg&text=No+poster";
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -44,9 +44,15 @@ const MovieDetailsPage = () => {
   const backdropStyle = {
     background: movie?.backdrop_path
       ? `url(https://image.tmdb.org/t/p/w1280/${movie.backdrop_path})`
-      : "none",
+      : "var(--color-backdrop-box)",
+
     backgroundSize: "cover",
     backgroundPosition: "center",
+  };
+
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split("-");
+    return `${day}.${month}.${year}`;
   };
 
   return (
@@ -113,7 +119,9 @@ const MovieDetailsPage = () => {
                       <h3 className={css.infoAccent}>Release Date:</h3>
 
                       {movie.release_date ? (
-                        <p className={css.infoText}>{movie.release_date}</p>
+                        <p className={css.infoText}>
+                          {formatDate(movie.release_date)}
+                        </p>
                       ) : (
                         <BsPatchQuestion size="20" className={css.infoIcon} />
                       )}
@@ -140,6 +148,20 @@ const MovieDetailsPage = () => {
                         <BsPatchQuestion size="20" className={css.infoIcon} />
                       )}
                     </li>
+                    <li className={css.infoItem}>
+                      <h3 className={css.infoAccent}>Budget:</h3>
+                      {movie.budget ? (
+                        <p className={css.infoText}>
+                          {movie.budget.toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                            minimumFractionDigits: 0,
+                          })}
+                        </p>
+                      ) : (
+                        <BsPatchQuestion size="20" className={css.infoIcon} />
+                      )}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -152,6 +174,14 @@ const MovieDetailsPage = () => {
                   }
                 >
                   Cast
+                </NavLink>
+                <NavLink
+                  to="crew"
+                  className={({ isActive }) =>
+                    isActive ? css.active : css.link
+                  }
+                >
+                  Crew
                 </NavLink>
                 <NavLink
                   to="reviews"

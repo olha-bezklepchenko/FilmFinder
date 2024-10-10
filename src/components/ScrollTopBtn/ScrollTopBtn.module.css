@@ -1,0 +1,29 @@
+.scrollBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: transparent;
+  /* border: 1px solid var(--color-primary); */
+  border-radius: 12px;
+  padding: 5px;
+  color: var(--color-primary);
+  font-size: 18px;
+
+  transition: opacity var(--animation-cubicBezier),
+    color var(--animation-cubicBezier),
+    background-color var(--animation-cubicBezier);
+}
+
+.scrollBtn:hover {
+  color: var(--color-mainBackground);
+  background-color: var(--color-primary);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}

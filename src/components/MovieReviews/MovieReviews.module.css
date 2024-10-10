@@ -5,28 +5,29 @@
 }
 
 .item {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  border: 1px solid #bfa5cc;
-  border-radius: 12px;
-  transition: box-shadow 250ms cubic-bezier(0.7, 0.98, 0.86, 0.98);
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 10px;
+  box-shadow: var(--shadow-light-trasparent);
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border: var(--border-colorful);
+  border-radius: 12px;
+  transition: box-shadow var(--animation-cubicBezier);
 }
 
 .item:hover,
 .item:focus {
-  box-shadow: 0 0 0 2px #e2d5e9;
+  box-shadow: var(--shadow-light);
 }
 
 .infoWrapper {
   display: flex;
   gap: 20px;
   width: 100%;
-  color: #e2d5e9;
+  color: var(--color-primary);
 }
 
 .infoItem {
@@ -41,11 +42,12 @@
 }
 
 .textWrapper {
-  background-color: #d7cde08f;
+  background-color: var(--color-wrapperTrasparent-light);
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px 1px #c9b2d67c;
+  box-shadow: var(--shadow-light-trasparent);
+  color: var(--color-text-contrast);
   padding: 5px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -73,9 +75,9 @@
 
 .message {
   border-radius: 8px;
-  box-shadow: 0px 0px 10px 1px #c9b2d67c;
+  box-shadow: var(--shadow-light-trasparent);
   padding: 10px;
-  color: #e2d5e9;
+  color: var(--color-primary);
   text-align: center;
 }
 

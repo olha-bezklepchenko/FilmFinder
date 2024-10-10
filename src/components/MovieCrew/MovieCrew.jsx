@@ -2,44 +2,78 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
-import css from "./MovieCast.module.css";
+import css from "../MovieCast/MovieCast.module.css";
 
 import { getMovieCast } from "../../servicies/tmdb-api";
 const defaultImg =
   "https://dummyimage.com/400x600/c2b8c7/40065e.jpg&text=No+photo";
 
-const MovieCast = () => {
-  const [cast, setCast] = useState([]);
+const MovieCrew = () => {
+  const [crew, setCrew] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { movieId } = useParams();
-  const firstCastRef = useRef(null);
+
+  const firstCrewRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
-    const fetchMovieCast = async () => {
+    const fetchMovieCrew = async () => {
       try {
         setIsLoading(true);
-        const movieCast = await getMovieCast(movieId);
-        setCast(movieCast.cast);
+        const movieCrew = await getMovieCast(movieId);
+        setCrew(movieCrew.crew);
       } catch (error) {
         setIsError(error.message);
       } finally {
         setIsLoading(false);
       }
     };
-    fetchMovieCast();
+    fetchMovieCrew();
   }, [movieId]);
 
   useEffect(() => {
-    if (cast.length > 0 && firstCastRef.current) {
-      const itemHeight = firstCastRef.current.getBoundingClientRect().height;
+    if (crew.length > 0 && firstCrewRef.current) {
+      const itemHeight = firstCrewRef.current.getBoundingClientRect().height;
       window.scrollBy({
         top: itemHeight * 2,
         behavior: "smooth",
       });
     }
-  }, [cast]);
+  }, [crew]);
+
+  const importantJobs = [
+    "Director",
+    "Producer",
+    "Writer",
+    "Editor",
+    "Director of Photography",
+    "Original Music Composer",
+    "Production Design",
+    "Casting Director",
+    "Visual Effects Editor",
+    "Sound Designer",
+    "Costume Design",
+  ];
+  const filteredCrew = crew
+    .filter((person) => importantJobs.includes(person.job))
+    .sort((a, b) => {
+      const aJobIndex = importantJobs.indexOf(a.job);
+      const bJobIndex = importantJobs.indexOf(b.job);
+      return aJobIndex - bJobIndex;
+    });
+
+  const crewPersons = {};
+
+  filteredCrew.forEach(({ id, name, job, profile_path }) => {
+    if (crewPersons[name]) {
+      crewPersons[name].job.push(job);
+    } else {
+      crewPersons[name] = { id, name, job: [job], profile_path };
+    }
+  });
+
+  const crewArray = Object.values(crewPersons);
 
   const formatNameForUrl = (name) => {
     return name.toLowerCase().replace(/\s+/g, "-");
@@ -55,47 +89,44 @@ const MovieCast = () => {
               or try again later."
         />
       )}
-      {cast.length > 0 && (
+      {crew.length > 0 && (
         <ul className={css.list}>
-          {cast.map((actor, index) => (
+          {crewArray.map((person, index) => (
             <li
-              key={actor.id}
+              key={person.id}
               className={css.item}
-              ref={index === 0 ? firstCastRef : null}
+              ref={index === 0 ? firstCrewRef : null}
             >
               <Link
-                to={`/person/${actor.id}-${formatNameForUrl(actor.name)}`}
+                to={`/person/${person.id}-${formatNameForUrl(person.name)}`}
                 state={location}
                 className={css.itemLink}
               >
                 <div className={css.imageWrapper}>
                   <img
                     src={
-                      actor.profile_path
-                        ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+                      person.profile_path
+                        ? `https://image.tmdb.org/t/p/w200/${person.profile_path}`
                         : defaultImg
                     }
-                    alt={actor.name}
-                    className={css.image}
+                    alt={person.name}
                   />
                 </div>
                 <div className={css.infoWrapper}>
-                  <h3 className={css.infoName}>{actor.name}</h3>
+                  <h3 className={css.infoName}>{person.name}</h3>
                   <p className={css.infoAccent}>As</p>
-                  <p className={css.infoText}>
-                    {actor.character ? actor.character : "Unknown"}
-                  </p>
+                  <p className={css.infoText}>{person.job.join(", ")}</p>
                 </div>
               </Link>
             </li>
           ))}
         </ul>
       )}
-      {cast.length === 0 && !isLoading && !isError && (
+      {crew.length === 0 && !isLoading && !isError && (
         <p className={css.message}>No cast information available.</p>
       )}
     </>
   );
 };
 
-export default MovieCast;
+export default MovieCrew;

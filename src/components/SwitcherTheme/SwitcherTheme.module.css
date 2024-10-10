@@ -1,0 +1,43 @@
+.btnSwitcher {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: transparent;
+  padding: 10px;
+  color: var(--color-primary);
+  font-size: 18px;
+  transition: opacity var(--animation-cubicBezier),
+    color var(--animation-cubicBezier),
+    background-color var(--animation-cubicBezier);
+}
+
+.btnSwitcher:hover {
+  color: var(--color-mainBackground);
+}
+
+.iconSun {
+  width: 20px;
+  height: 20px;
+}
+
+.iconMoon {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .iconSun {
+    width: 30px;
+    height: 30px;
+  }
+
+  .iconMoon {
+    width: 30px;
+    height: 30px;
+  }
+}
