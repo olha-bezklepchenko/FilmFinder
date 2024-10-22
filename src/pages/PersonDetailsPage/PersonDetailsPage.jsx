@@ -11,6 +11,7 @@ import Section from "../../components/Section/Section.jsx";
 import Container from "../../components/Container/Container.jsx";
 import { getPersonDetails } from "../../servicies/tmdb-api";
 import css from "./PersonDetailsPage.module.css";
+import MoviesByPerson from "../../components/MoviesByPerson/MoviesByPerson.jsx";
 // import { BsPatchQuestion } from "react-icons/bs";
 
 const PersonDetailsPage = () => {
@@ -114,7 +115,8 @@ const PersonDetailsPage = () => {
             </div>
           </>
         )}
-        <div>Movie list by person</div>
+
+        {profile && <MoviesByPerson personId={personId} name={profile.name} />}
       </Container>
     </Section>
   );
