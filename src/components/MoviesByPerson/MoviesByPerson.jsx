@@ -28,7 +28,7 @@ const MoviesByPerson = ({ personId, name }) => {
 
   return (
     <>
-      <h1 className={css.title}>{`Movies width ${name}`}</h1>
+      <h1 className={css.title}>{`Movies with ${name}`}</h1>
       {isLoading && <Loader />}
       {isError && !isLoading && (
         <ErrorMessage
