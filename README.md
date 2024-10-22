@@ -4,13 +4,15 @@ FilmFinder is a web application for searching movies, viewing their information,
 
 ## 🚀 Features
 
-- **Movie Search**: Easily find movies by title with implemented pagination.
-- **Movie Details**: View essential information about a movie, including the plot summary, ratings, runtime, genres, and more.
-- **Cast and Crew**: Browse a list of actors and crew members involved in the film.
-- **Reviews**: Read user reviews about the movie.
-- **Personal Details**: Access biographies of actors and crew members, including notable films and life dates.
-- **Smooth Navigation**: Quick page transitions through client-side routing.
-- **Back to Top Button**: Conveniently return to the top of the page.
+- **Trending Movies**: the ability to view movies that are trending today or this week, based on user selection.
+- **Theme Switching**: the ability to toggle between dark and light themes.
+- **Movie Search**: the ability to find movies by title with implemented pagination.
+- **Movie Details**: view essential information about a movie, including the plot summary, ratings, runtime, genres, and more.
+- **Cast and Crew**: browse a list of actors and crew members involved in the film.
+- **Reviews**: read user reviews about the movie.
+- **Personal Details**: access biographies of actors and crew members, including notable films and life dates.
+- **Smooth Navigation**: quick page transitions through client-side routing.
+- **Back to Top Button**: conveniently return to the top of the page.
 
 ## 🛠️ Technologies
 
