@@ -1,7 +1,10 @@
 import { useSearchParams } from "react-router-dom";
-import { getSearchingMovie } from "../../servicies/tmdb-api";
+import {
+  getSearchingPerson,
+  getTrendingPeople,
+} from "../../servicies/tmdb-api";
 import SearchBar from "../../components/SearchBar/SearchBar.jsx";
-import MovieList from "../../components/MovieList/MovieList";
+import PeopleList from "../../components/PeopleList/PeopleList.jsx";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
@@ -9,8 +12,9 @@ import Section from "../../components/Section/Section.jsx";
 import Container from "../../components/Container/Container.jsx";
 import { useState, useEffect } from "react";
 
-const MoviesPage = () => {
-  const [movies, setMovies] = useState([]);
+const PeoplePage = () => {
+  const [people, setPeople] = useState([]);
+  const [persons, setPersons] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,15 +25,27 @@ const MoviesPage = () => {
 
   useEffect(() => {
     if (!query) {
-      return;
+      const fetchPeople = async () => {
+        try {
+          setIsLoading(true);
+          setIsError(false);
+          const trendingPeople = await getTrendingPeople();
+          setPeople(trendingPeople);
+        } catch (error) {
+          setIsError(error.message);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchPeople();
     }
-    const searchMovies = async () => {
+    const searchPersons = async () => {
       try {
         setIsLoading(true);
         setIsError(false);
-        setMovies([]);
-        const data = await getSearchingMovie(query, page);
-        setMovies(data.results);
+        setPersons([]);
+        const data = await getSearchingPerson(query, page);
+        setPersons(data.results);
         setTotalPages(data.total_pages);
       } catch (error) {
         setIsError(error.message);
@@ -38,16 +54,16 @@ const MoviesPage = () => {
       }
     };
 
-    searchMovies();
+    searchPersons();
   }, [query, page]);
 
   const handleChangeQuery = (newQuery) => {
     if (!newQuery) {
       setSearchParams({});
-      setMovies([]);
+      setPersons([]);
       return;
     }
-    setSearchParams({ query: newQuery, page: 1 });
+    setSearchParams({ query: newQuery, page: 0 });
   };
 
   const handlePageChange = (newPage) => {
@@ -64,13 +80,20 @@ const MoviesPage = () => {
           {isError && (
             <ErrorMessage
               title="Something went wrong..."
-              message=" We couldn't load the movies. Please check your internet connection
+              message=" We couldn't load the people. Please check your internet connection
             or try again later."
             />
           )}
-          {movies?.length > 0 ? (
+
+          {!query && people?.length > 0 && (
             <>
-              <MovieList movies={movies} />
+              <PeopleList persons={people} />
+            </>
+          )}
+
+          {query && persons?.length > 0 ? (
+            <>
+              <PeopleList persons={persons} />
               <Pagination
                 currentPage={page}
                 totalPages={totalPages}
@@ -82,7 +105,7 @@ const MoviesPage = () => {
             !isLoading && (
               <ErrorMessage
                 title="Unfortunately"
-                message="There are no movies to display.Try another query."
+                message="There are no person to display.Try another query."
               />
             )
           )}
@@ -92,4 +115,4 @@ const MoviesPage = () => {
   );
 };
 
-export default MoviesPage;
+export default PeoplePage;

@@ -46,6 +46,25 @@
   transform: scale(1.1);
 }
 
+.btnClear {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition: all var(--animation-cubicBezier);
+}
+
+.btnClear:hover .icon {
+  transform: scale(1.1);
+}
+
 @media screen and (min-width: 520px) {
   .inputWrapper {
     width: 520px;

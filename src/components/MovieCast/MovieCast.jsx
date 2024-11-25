@@ -64,7 +64,7 @@ const MovieCast = () => {
               ref={index === 0 ? firstCastRef : null}
             >
               <Link
-                to={`/person/${actor.id}-${formatNameForUrl(actor.name)}`}
+                to={`/people/${actor.id}-${formatNameForUrl(actor.name)}`}
                 state={location}
                 className={css.itemLink}
               >

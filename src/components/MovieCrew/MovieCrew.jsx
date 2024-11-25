@@ -98,7 +98,7 @@ const MovieCrew = () => {
               ref={index === 0 ? firstCrewRef : null}
             >
               <Link
-                to={`/person/${person.id}-${formatNameForUrl(person.name)}`}
+                to={`/people/${person.id}-${formatNameForUrl(person.name)}`}
                 state={location}
                 className={css.itemLink}
               >

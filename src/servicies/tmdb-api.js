@@ -48,7 +48,7 @@ export const getMovieReviews = async (movieId) => {
 };
 
 export const getPersonDetails = async (personId) => {
-  const response = await axios.get(`person/${personId}`, {
+  const response = await axios.get(`/person/${personId}`, {
     headers: { Authorization: `Bearer ${MY_API_KEY}` },
   });
 
@@ -56,9 +56,29 @@ export const getPersonDetails = async (personId) => {
 };
 
 export const getPersonMovie = async (personId) => {
-  const response = await axios.get(`person/${personId}/movie_credits`, {
+  const response = await axios.get(`/person/${personId}/movie_credits`, {
     headers: { Authorization: `Bearer ${MY_API_KEY}` },
   });
 
   return response.data.cast;
+};
+
+export const getTrendingPeople = async () => {
+  const response = await axios.get(`/trending/person/week`, {
+    headers: { Authorization: `Bearer ${MY_API_KEY}` },
+  });
+  return response.data.results;
+};
+
+export const getSearchingPerson = async (query, page) => {
+  const response = await axios.get(`/search/person`, {
+    headers: {
+      Authorization: `Bearer ${MY_API_KEY}`,
+    },
+    params: {
+      query,
+      page,
+    },
+  });
+  return response.data;
 };

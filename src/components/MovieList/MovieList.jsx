@@ -4,7 +4,7 @@ import css from "./MovieList.module.css";
 const MovieList = ({ movies }) => {
   const location = useLocation();
   const defaultImg =
-    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
+    "https://dummyimage.com/400x600/c2b8c7/40065e.jpg&text=No+poster";
 
   return (
     <ul className={css.list}>
