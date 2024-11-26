@@ -52,7 +52,9 @@ const PeopleList = ({
               </div>
               <div className={css.info}>
                 <h3 className={css.infoName}>{person.name}</h3>
-                <p className={css.infoAccent}>{isCast ? "As" : "Known for:"}</p>
+                <p className={css.infoAccent}>
+                  {isCast || isCrew ? "As" : "Known for:"}
+                </p>
 
                 <p className={css.infoText}>
                   {isCast && (person.character ? person.character : "Unknown")}
