@@ -1,20 +1,17 @@
-import { Link, useLocation, useParams } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 import css from "./MovieCast.module.css";
 
 import { getMovieCast } from "../../servicies/tmdb-api";
-const defaultImg =
-  "https://dummyimage.com/400x600/c2b8c7/40065e.jpg&text=No+photo";
+import PeopleList from "../PeopleList/PeopleList.jsx";
 
 const MovieCast = () => {
   const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { movieId } = useParams();
-  const firstCastRef = useRef(null);
-  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieCast = async () => {
@@ -31,20 +28,6 @@ const MovieCast = () => {
     fetchMovieCast();
   }, [movieId]);
 
-  useEffect(() => {
-    if (cast.length > 0 && firstCastRef.current) {
-      const itemHeight = firstCastRef.current.getBoundingClientRect().height;
-      window.scrollBy({
-        top: itemHeight * 2,
-        behavior: "smooth",
-      });
-    }
-  }, [cast]);
-
-  const formatNameForUrl = (name) => {
-    return name.toLowerCase().replace(/\s+/g, "-");
-  };
-
   return (
     <>
       {isLoading && <Loader />}
@@ -56,40 +39,7 @@ const MovieCast = () => {
         />
       )}
       {cast.length > 0 && (
-        <ul className={css.list}>
-          {cast.map((actor, index) => (
-            <li
-              key={actor.id}
-              className={css.item}
-              ref={index === 0 ? firstCastRef : null}
-            >
-              <Link
-                to={`/people/${actor.id}-${formatNameForUrl(actor.name)}`}
-                state={location}
-                className={css.itemLink}
-              >
-                <div className={css.imageWrapper}>
-                  <img
-                    src={
-                      actor.profile_path
-                        ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
-                        : defaultImg
-                    }
-                    alt={actor.name}
-                    className={css.image}
-                  />
-                </div>
-                <div className={css.infoWrapper}>
-                  <h3 className={css.infoName}>{actor.name}</h3>
-                  <p className={css.infoAccent}>As</p>
-                  <p className={css.infoText}>
-                    {actor.character ? actor.character : "Unknown"}
-                  </p>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PeopleList people={cast} isCast={true} isScrollEnabled={true} />
       )}
       {cast.length === 0 && !isLoading && !isError && (
         <p className={css.message}>No cast information available.</p>

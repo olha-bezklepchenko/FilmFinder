@@ -87,13 +87,13 @@ const PeoplePage = () => {
 
           {!query && people?.length > 0 && (
             <>
-              <PeopleList persons={people} />
+              <PeopleList people={people} />
             </>
           )}
 
           {query && persons?.length > 0 ? (
             <>
-              <PeopleList persons={persons} />
+              <PeopleList people={persons} />
               <Pagination
                 currentPage={page}
                 totalPages={totalPages}

@@ -49,7 +49,7 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 3px;
 }
 
 .link {
@@ -66,8 +66,9 @@
 .active {
   color: var(--color-secondary);
   background-color: var(--color-primary);
+  font-size: 14px;
   font-weight: 600;
-  padding: 2px 6px;
+  padding: 2px 2px;
   border-radius: 8px;
   transform: scale(1);
   pointer-events: none;
@@ -91,6 +92,13 @@
   .logoName {
     font-size: 22px;
   }
+  .nav {
+    gap: 5px;
+  }
+
+  .active {
+    padding: 2px 4px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -108,11 +116,22 @@
   }
 
   .nav {
-    gap: 20px;
+    gap: 10px;
   }
 
   .link {
-    font-size: 24px;
+    font-size: 26px;
+  }
+
+  .active {
+    padding: 4px 8px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .nav {
+    gap: 20px;
   }
 
   .active {

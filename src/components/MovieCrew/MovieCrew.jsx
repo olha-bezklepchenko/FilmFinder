@@ -1,21 +1,17 @@
-import { Link, useLocation, useParams } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 import css from "../MovieCast/MovieCast.module.css";
 
 import { getMovieCast } from "../../servicies/tmdb-api";
-const defaultImg =
-  "https://dummyimage.com/400x600/c2b8c7/40065e.jpg&text=No+photo";
+import PeopleList from "../PeopleList/PeopleList.jsx";
 
 const MovieCrew = () => {
   const [crew, setCrew] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { movieId } = useParams();
-
-  const firstCrewRef = useRef(null);
-  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieCrew = async () => {
@@ -31,16 +27,6 @@ const MovieCrew = () => {
     };
     fetchMovieCrew();
   }, [movieId]);
-
-  useEffect(() => {
-    if (crew.length > 0 && firstCrewRef.current) {
-      const itemHeight = firstCrewRef.current.getBoundingClientRect().height;
-      window.scrollBy({
-        top: itemHeight * 2,
-        behavior: "smooth",
-      });
-    }
-  }, [crew]);
 
   const importantJobs = [
     "Director",
@@ -75,52 +61,18 @@ const MovieCrew = () => {
 
   const crewArray = Object.values(crewPersons);
 
-  const formatNameForUrl = (name) => {
-    return name.toLowerCase().replace(/\s+/g, "-");
-  };
-
   return (
     <>
       {isLoading && <Loader />}
       {isError && (
         <ErrorMessage
           title="Something went wrong..."
-          message="Unable to load the cast details. Please check your internet connection
+          message="Unable to load the crew details. Please check your internet connection
               or try again later."
         />
       )}
       {crew.length > 0 && (
-        <ul className={css.list}>
-          {crewArray.map((person, index) => (
-            <li
-              key={person.id}
-              className={css.item}
-              ref={index === 0 ? firstCrewRef : null}
-            >
-              <Link
-                to={`/people/${person.id}-${formatNameForUrl(person.name)}`}
-                state={location}
-                className={css.itemLink}
-              >
-                <div className={css.imageWrapper}>
-                  <img
-                    src={
-                      person.profile_path
-                        ? `https://image.tmdb.org/t/p/w200/${person.profile_path}`
-                        : defaultImg
-                    }
-                    alt={person.name}
-                  />
-                </div>
-                <div className={css.infoWrapper}>
-                  <h3 className={css.infoName}>{person.name}</h3>
-                  <p className={css.infoAccent}>As</p>
-                  <p className={css.infoText}>{person.job.join(", ")}</p>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PeopleList people={crewArray} isCrew={true} isScrollEnabled={true} />
       )}
       {crew.length === 0 && !isLoading && !isError && (
         <p className={css.message}>No cast information available.</p>

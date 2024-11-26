@@ -1,6 +1,6 @@
 import { Formik, Field, Form } from "formik";
 import { SiSearxng } from "react-icons/si";
-import { FiX } from "react-icons/fi";
+import { FiXCircle } from "react-icons/fi";
 import css from "./SearchBar.module.css";
 
 const SearchBar = ({ query, handleChangeQuery }) => {
@@ -38,7 +38,7 @@ const SearchBar = ({ query, handleChangeQuery }) => {
               aria-label="Clear search"
               className={css.btnClear}
             >
-              <FiX size={20} />
+              <FiXCircle size="25px" color="#19042b" className={css.icon} />
             </button>
           )}
         </div>

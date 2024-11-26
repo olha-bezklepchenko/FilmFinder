@@ -25,6 +25,12 @@ const Navigation = () => {
           >
             Movies
           </NavLink>
+          <NavLink
+            to="/people"
+            className={({ isActive }) => (isActive ? css.active : css.link)}
+          >
+            People
+          </NavLink>
         </nav>
       </div>
     </header>
